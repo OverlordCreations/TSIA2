@@ -754,7 +754,7 @@ async function answer(question, choiceId) {
     void syncPendingAttempts();
     const [heading, summary] = pendingEvidence.correctness
       ? actionCopy[pendingEvidence.recommendedNextAction] ?? ['Nice work', 'You are ready for the next problem.']
-      : ['Let’s look at that choice', 'Use the explanation below, then try the next problem when you are ready.'];
+      : ['Let’s look at that choice', 'Read the feedback, then try the next problem when you are ready.'];
     els.feedback.hidden = false; els.feedback.className = `feedback ${pendingEvidence.correctness ? 'good' : 'coach'}`; els.feedback.replaceChildren();
     const label = document.createElement('strong'); label.textContent = heading;
     const explanation = document.createElement('p'); explanation.textContent = studentFeedbackCopy(pendingEvidence.explanation, question.prompt);

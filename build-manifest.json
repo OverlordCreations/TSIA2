@@ -1,6 +1,6 @@
 {
   "generatedFrom": {
-    "sourceCommit": "0cfc2a0401c91f61a6429fa9525a2ea195f7cdf7",
+    "sourceCommit": "63f544e2ab397ea492514b90a9db8aec68ce419c",
     "approvedRuntimeSourceCommit": null,
     "graphVersion": "1.0.0",
     "questionVersion": "1.0.0",
@@ -8,7 +8,7 @@
     "graphSha256": "61bbcc4262d5e4cf75eb1b4b243f8e40df8443c89f22955b0f982c2052017d6a",
     "questionSha256": "58771824ab48f83a554aa927ebf9a49735819cfc037f2ed2bbd4e17460bb3500",
     "metadataSha256": "d83d1bfacc60969338f0324b6aa5abfe8351204b63acf465041e668fdcb972fc",
-    "releaseId": "evaluation-0cfc2a0401c91f61a6429fa9525a2ea195f7cdf7",
+    "releaseId": "evaluation-63f544e2ab397ea492514b90a9db8aec68ce419c",
     "deployable": false,
     "contentApproval": {
       "decision": "recovered-approval-unverified",
@@ -50,10 +50,10 @@
     "help.html": "0ada27e00f85a9b06ede50ee90545822d103f1f0ccc0d9804381745bfd353302",
     "css/app.css": "030e20997567e6cc46c456b2fea6075e817368a8e3818b06430e4978c76ff69e",
     "css/help.css": "c79062355b4e237e0ed7559dcda10fe3534408796ec115bbcb94f35667803975",
-    "js/app.js": "9521b0ff46e6801448df586cb9782e367590ffbacd82ef5bee08cf3554a43ec6",
+    "js/app.js": "08cba71c4b50e1ec94a33b01e086f56e4ff5322f43b18e8495b86e4673fe7dd0",
     "js/help.js": "e599d09a650d9218a8e7314e76b2ad72ff6aa8a24f3208597910d24411146c44",
     "js/release-access.js": "ad6603f7d89b5f3cdf475d2ab2385901a0f0cf30508f0276a41f2542be021a7b",
-    "js/student-display-copy.js": "92debde67e85a869f60ded73df2cfff4031bb4178cbee994e7f02648fc73a973",
+    "js/student-display-copy.js": "692846ecf05133b3cac83f3eba97a646c2f147f8400d193a68adee9e66f1e72b",
     "js/engine.js": "76ec317f8c48d48be53dfc4722d443a27edbb6cb5f4dfd06e3242c8c038286b7",
     "js/progress.js": "50523522cca6d90cf7a4fa815b8ec3f2a1d129e90f6a96a9bf634cf94c6ef283",
     "js/hints.js": "8f421dec650872e506265bfa0b23b807341b92e225d69cf259e3bc7defcafd72",
@@ -68,7 +68,7 @@
     "js/persistence.js": "b4edc9ecac6cb31e7fdf8bbe2e1d3a88739b9964ba0b67e72234badff0fce5d5",
     "data/skills.json": "1670383f527fcec32588d9feb921576ebe2ee1c68b8c6a7911613d0547b9b4ac",
     "data/questions.json": "af66f176b366815d571b9d43fa358f34931661725ac7b72f4db6741eb0ffb22a",
-    "data/release.json": "b344345b0e224e997e77b470fbf4bb2797c92cb192810ede1730ca2a5b0a95aa"
+    "data/release.json": "8d9d2f75ad11feb944ba92781282dbbdf5a43ad05d755915973f921b4c5981e1"
   },
   "excludes": [
     "teacher documentation",
