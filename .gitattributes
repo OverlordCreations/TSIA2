@@ -1,0 +1,5 @@
+# Preserve the exact generated artifact bytes bound by build-manifest.json.
+* -text
+.github/** text eol=lf
+README.md text eol=lf
+.gitattributes text eol=lf

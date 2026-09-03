@@ -1,0 +1,17 @@
+{
+  "releaseId": "evaluation-0cfc2a0401c91f61a6429fa9525a2ea195f7cdf7",
+  "graphVersion": "1.0.0",
+  "questionVersion": "1.0.0",
+  "metadataVersion": "1.0.0",
+  "graphSha256": "61bbcc4262d5e4cf75eb1b4b243f8e40df8443c89f22955b0f982c2052017d6a",
+  "questionSha256": "58771824ab48f83a554aa927ebf9a49735819cfc037f2ed2bbd4e17460bb3500",
+  "metadataSha256": "d83d1bfacc60969338f0324b6aa5abfe8351204b63acf465041e668fdcb972fc",
+  "teacherCatalogSha256": "82d4724d18e49bee640d1147db9e67db1b2b9bd63026a3d433bd5de8b79dc1a7",
+  "persistentPilotEligible": false,
+  "evaluation": {
+    "channel": "owner-evaluation",
+    "sourceCommit": "0cfc2a0401c91f61a6429fa9525a2ea195f7cdf7",
+    "cloudEnabled": false,
+    "instructionalApproval": false
+  }
+}

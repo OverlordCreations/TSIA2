@@ -8,43 +8,95 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+  <a id="skipLink" class="skip-link" href="#entryHeading">Skip to your practice choices</a>
   <main class="shell">
+    <aside id="evaluationNotice" class="evaluation-notice" role="note" hidden></aside>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Percent reasoning practice</p>
-        <h1>One useful step at a time</h1>
+        <p class="eyebrow">TSIA2 math practice</p>
+        <h1 id="pageTitle">Your TSIA2 Math Progress</h1>
         <p class="subhead">Start with what you know. Your answers choose the next useful step.</p>
       </div>
-      <button id="restartButton" class="quiet-button" type="button">Start over</button>
+      <div class="account-actions">
+        <p id="accountStatus" class="account-status" role="status" aria-live="polite">Preparing practice on this device.</p>
+        <p id="syncStatus" class="account-status" role="status" aria-live="polite">First-time loading needs a connection. After it loads, practice can save on this device.</p>
+        <button id="signInButton" class="quiet-button" type="button" disabled>Sign in to save progress</button>
+        <button id="signOutButton" class="quiet-button" type="button" hidden>Sign out</button>
+        <button id="restartButton" class="quiet-button" type="button" disabled>View my progress</button>
+        <a class="help-link" href="help.html">Help and how to use this site</a>
+      </div>
     </header>
 
-    <section class="progress-panel" aria-label="Your progress">
+    <section id="practiceContext" class="progress-panel" aria-label="Current practice">
       <div class="progress-copy">
         <span id="skillName">Getting your first problem ready</span>
         <span id="skillStatus">Not assessed</span>
       </div>
       <div class="progress-track" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
-      <p id="progressMessage" class="progress-message">Show what you know. You can move forward quickly.</p>
+      <p id="progressMessage" class="progress-message" role="status" aria-live="polite">Show what you know. You can move forward quickly.</p>
     </section>
 
-    <section class="question-card" aria-live="polite">
+    <section id="entryPanel" class="entry-panel" aria-labelledby="entryHeading" tabindex="-1">
+      <div id="startupStatus" class="startup-status" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+      <button id="retryLoadButton" class="quiet-button" type="button" hidden>Retry loading practice</button>
+      <p class="section-kicker">Your next practice step</p>
+      <h2 id="entryHeading" tabindex="-1">Start with a short TSIA2 math check</h2>
+      <p id="resumeMessage" class="entry-copy" hidden></p>
+      <div id="resumeActions" class="resume-actions" hidden></div>
+      <section id="recommendedNext" class="recommended-next" aria-labelledby="recommendedNextHeading"></section>
+      <div id="domainChoices" class="domain-grid" aria-label="TSIA2 mathematics domains"></div>
+      <p id="homeAnnouncement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <section id="classPanel" class="class-panel" aria-labelledby="classHeading">
+      <div class="class-panel-heading">
+        <div><p class="section-kicker">Optional class connection</p><h2 id="classHeading">Your classes</h2></div>
+        <button id="classRetryButton" class="quiet-button" type="button" hidden>Refresh classes</button>
+      </div>
+      <p id="classStatus" class="class-status" role="status">Sign in to view or join a class.</p>
+      <form id="classJoinForm" class="class-join-form" hidden>
+        <label for="classJoinCode">Class code</label>
+        <div class="class-join-controls"><input id="classJoinCode" name="class-code" inputmode="text" autocomplete="one-time-code" maxlength="11" spellcheck="false" aria-describedby="classJoinHelp"><button id="classJoinButton" class="quiet-button" type="submit">Join class</button></div>
+        <p id="classJoinHelp" class="class-help">Enter the eight-character code your teacher gave you.</p>
+      </form>
+      <div id="classMemberships" class="class-memberships" aria-live="polite"></div>
+    </section>
+
+    <section id="migrationPanel" class="migration-panel" aria-labelledby="migrationHeading" hidden>
+      <h2 id="migrationHeading">Keep earlier practice?</h2>
+      <p id="migrationCopy">We found practice saved on this device. It stays on this device unless you choose to connect it to this signed-in account.</p>
+      <div class="migration-actions"><button id="confirmMigrationButton" class="quiet-button" type="button">Keep this device’s earlier practice</button><button id="dismissMigrationButton" class="quiet-button" type="button">Not now</button></div>
+    </section>
+
+    <section id="questionCard" class="question-card" hidden>
       <div class="question-meta">
         <span id="levelLabel">Starting problem</span>
         <span id="attemptLabel">Question 1</span>
       </div>
-      <h2 id="questionPrompt">Loading your practice…</h2>
-      <div id="answerChoices" class="choices"></div>
-      <div class="help-row">
-        <button id="hintButton" class="quiet-button" type="button">Give me a small hint</button>
-      </div>
-      <div id="hint" class="hint" hidden></div>
-      <div id="feedback" class="feedback" hidden></div>
+      <p class="problem-kicker">Your task</p>
+      <h2 id="questionPrompt" tabindex="-1">Loading your problem…</h2>
+      <p id="questionAnnouncement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="questionRepresentation" class="question-representation" hidden></div>
+      <div id="answerChoices" class="choices" role="group" aria-labelledby="questionPrompt" aria-describedby="questionChoiceHelp"></div>
+      <p id="questionChoiceHelp" class="visually-hidden">Choose one answer.</p>
+      <p id="calculatorGuidance" class="calculator-guidance" role="note" hidden></p>
+      <p id="submissionStatus" class="submission-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+      <section class="help-panel" aria-labelledby="helpHeading">
+        <h3 id="helpHeading">Need a nudge?</h3>
+        <p>Help is welcome. Start with one small step, then use a later problem to try the idea on your own.</p>
+        <div class="help-row">
+          <button id="hintButton" class="quiet-button" type="button">Show me a small step</button>
+        </div>
+        <div id="hint" class="hint" role="region" aria-label="A small step" tabindex="-1" hidden></div>
+      </section>
+      <div id="feedback" class="feedback" role="region" aria-label="Answer feedback" tabindex="-1" hidden></div>
       <button id="nextButton" class="next-button" type="button" hidden>Continue</button>
+      <button id="progressButton" class="quiet-button progress-button" type="button" hidden>Back to progress</button>
     </section>
 
-    <section class="why-panel">
-      <h3>How this practice works</h3>
-      <p>If an answer shows a specific gap, you will get a short check or a smaller step. When you show understanding, you move ahead to new and harder problems.</p>
+    <section id="whyPanel" class="why-panel">
+      <h3>One problem at a time</h3>
+      <p>Start where you are. If a problem feels tough, use a small step, then keep going with the next problem.</p>
     </section>
   </main>
 

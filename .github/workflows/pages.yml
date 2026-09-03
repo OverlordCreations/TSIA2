@@ -25,10 +25,36 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Verify and stage only the generated public artifact
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { createHash } from 'node:crypto';
+          const manifest = JSON.parse(fs.readFileSync('build-manifest.json', 'utf8'));
+          const expected = ['.nojekyll','index.html','help.html','css/app.css','css/help.css','js/app.js','js/help.js','js/release-access.js','js/student-display-copy.js','js/engine.js','js/progress.js','js/hints.js','js/representations.js','js/firebase-client.js','js/firebase-config.js','js/class-membership.js','js/class-panel-view.js','js/authoritative-sync.js','js/student-snapshot-status.js','js/attempt-contract.js','js/persistence.js','data/skills.json','data/questions.json','data/release.json','build-manifest.json'].sort();
+          if (JSON.stringify([...manifest.allowlistedFiles].sort()) !== JSON.stringify(expected)) throw new Error('Unexpected public artifact allowlist');
+          const release = JSON.parse(fs.readFileSync('data/release.json', 'utf8'));
+          const evaluation = manifest.generatedFrom.publicationChannel === 'owner-evaluation' && manifest.generatedFrom.evaluationPublishable === true && manifest.generatedFrom.deployable === false && release.persistentPilotEligible === false && release.evaluation?.instructionalApproval === false && release.evaluation?.cloudEnabled === false && release.evaluation?.channel === 'owner-evaluation' && release.evaluation?.sourceCommit === manifest.generatedFrom.sourceCommit && release.releaseId === 'evaluation-' + manifest.generatedFrom.sourceCommit;
+          const formal = manifest.generatedFrom.deployable === true && release.persistentPilotEligible === true;
+          if (!evaluation && !formal) throw new Error('Artifact is not authorized for publication');
+          fs.mkdirSync('.pages-artifact');
+          for (const file of expected) {
+            if (!fs.lstatSync(file).isFile()) throw new Error('Artifact must contain regular files');
+            if (file !== 'build-manifest.json') {
+              const hash = createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+              if (hash !== manifest.artifactSha256[file]) throw new Error('Artifact hash mismatch: ' + file);
+            }
+            const destination = path.join('.pages-artifact', file);
+            fs.mkdirSync(path.dirname(destination), {recursive:true});
+            fs.copyFileSync(file, destination);
+          }
+          NODE
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: .pages-artifact
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

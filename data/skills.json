@@ -1,21 +1,81 @@
 {
-  "version": "0.4.0",
+  "version": "1.0.0",
   "skills": [
     {
       "id": "s001",
       "studentName": "What Percent Means",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-representation",
+        "subskill": "meaning-of-percent",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s002",
+        "s003",
+        "s010"
+      ],
+      "transferTargets": [
+        "s010"
+      ],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
       "regressionTargets": [],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s002",
       "studentName": "Decimals and Percents",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-representation",
+        "subskill": "decimal-and-percent-conversion",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s003",
+        "s004",
+        "s011",
+        "s012",
+        "s013"
+      ],
+      "transferTargets": [
+        "s004",
+        "s011"
+      ],
       "requiredPrerequisites": [
         "s001"
       ],
@@ -27,12 +87,41 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s003",
       "studentName": "Fractions and Percents",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-representation",
+        "subskill": "fraction-and-percent-conversion",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s004"
+      ],
+      "transferTargets": [
+        "s004",
+        "s007"
+      ],
       "requiredPrerequisites": [
         "s001",
         "x001"
@@ -48,12 +137,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s004",
       "studentName": "Compare Fractions, Decimals, and Percents",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "quantitative-comparison",
+        "subskill": "compare-percent-forms",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s011"
+      ],
+      "transferTargets": [
+        "s011"
+      ],
       "requiredPrerequisites": [
         "s002",
         "s003"
@@ -66,12 +183,43 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s005",
       "studentName": "Write and Read Ratios",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "ratios-and-rates",
+        "subskill": "ratio-orientation",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s006",
+        "s007",
+        "s010"
+      ],
+      "transferTargets": [
+        "s007",
+        "s010"
+      ],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -80,12 +228,45 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s006",
       "studentName": "Find a Unit Rate",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "ratios-and-rates",
+        "subskill": "unit-rate",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s008",
+        "s009",
+        "s024",
+        "s049",
+        "s051"
+      ],
+      "transferTargets": [
+        "s008",
+        "s024"
+      ],
       "requiredPrerequisites": [
         "s005",
         "x001"
@@ -98,12 +279,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s007",
       "studentName": "Build Equivalent Ratios",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "proportional-relationships",
+        "subskill": "equivalent-ratios",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s008"
+      ],
+      "transferTargets": [
+        "s008"
+      ],
       "requiredPrerequisites": [
         "s005",
         "x001"
@@ -116,12 +325,46 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s008",
       "studentName": "Solve a Proportion",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "proportional-relationships",
+        "subskill": "solve-proportions",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s003",
+        "s009",
+        "s011",
+        "s012",
+        "s013",
+        "s024"
+      ],
+      "transferTargets": [
+        "s009",
+        "s012"
+      ],
       "requiredPrerequisites": [
         "s007",
         "x001"
@@ -136,12 +379,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s009",
       "studentName": "Proportional Relationships",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "proportional-relationships",
+        "subskill": "model-proportional-relationships",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s025"
+      ],
+      "transferTargets": [
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s006"
       ],
@@ -154,12 +425,45 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s010",
       "studentName": "Find the Part, Whole, and Percent",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "part-whole-rate",
+        "subskill": "identify-part-whole-rate",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s011",
+        "s012",
+        "s013",
+        "s014"
+      ],
+      "transferTargets": [
+        "s011",
+        "s012",
+        "s013"
+      ],
       "requiredPrerequisites": [
         "s001"
       ],
@@ -172,12 +476,43 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s011",
       "studentName": "Find a Percent of a Number",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-calculation",
+        "subskill": "find-percent-of-quantity",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s014",
+        "s015",
+        "s016"
+      ],
+      "transferTargets": [
+        "s015",
+        "s016"
+      ],
       "requiredPrerequisites": [
         "s010",
         "x001"
@@ -202,12 +537,44 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s012",
       "studentName": "What Percent Is It?",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-calculation",
+        "subskill": "find-percent-rate",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s017",
+        "s020",
+        "s023"
+      ],
+      "transferTargets": [
+        "s017",
+        "s018",
+        "s023"
+      ],
       "requiredPrerequisites": [
         "s010",
         "x001"
@@ -230,12 +597,41 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s013",
       "studentName": "Find the Original Whole",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-calculation",
+        "subskill": "find-whole-from-part-and-rate",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s019"
+      ],
+      "transferTargets": [
+        "s019",
+        "s020"
+      ],
       "requiredPrerequisites": [
         "s010",
         "x001"
@@ -258,12 +654,47 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s014",
       "studentName": "Read Percent Problems",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "percent-language",
+        "subskill": "translate-percent-language",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s015",
+        "s016",
+        "s017",
+        "s018",
+        "s025"
+      ],
+      "transferTargets": [
+        "s015",
+        "s016",
+        "s017",
+        "s018"
+      ],
       "requiredPrerequisites": [
         "s010"
       ],
@@ -276,12 +707,43 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s015",
       "studentName": "Find the Amount of Change",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "percent-change-amount",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s016",
+        "s017",
+        "s018"
+      ],
+      "transferTargets": [
+        "s016",
+        "s017"
+      ],
       "requiredPrerequisites": [
         "s011",
         "s014"
@@ -294,12 +756,43 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s016",
       "studentName": "Find the New Value",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "final-value-after-percent-change",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s018",
+        "s019",
+        "s021"
+      ],
+      "transferTargets": [
+        "s018",
+        "s021"
+      ],
       "requiredPrerequisites": [
         "s011",
         "s014"
@@ -314,12 +807,42 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s017",
       "studentName": "Find Percent Change",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "percent-increase-and-decrease",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s020",
+        "s023"
+      ],
+      "transferTargets": [
+        "s018",
+        "s023"
+      ],
       "requiredPrerequisites": [
         "s012",
         "s014",
@@ -334,12 +857,42 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s018",
       "studentName": "Discount, Tax, Tip, and Markup",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "applied-percent-transactions",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s021",
+        "s025"
+      ],
+      "transferTargets": [
+        "s021",
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s014",
         "s015",
@@ -354,12 +907,41 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s019",
       "studentName": "Work Backward from a Percent Change",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "reverse-percent-problems",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s025"
+      ],
+      "transferTargets": [
+        "s020",
+        "s021"
+      ],
       "requiredPrerequisites": [
         "s013",
         "s016"
@@ -372,12 +954,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s020",
       "studentName": "Compare Values Using the Correct Reference",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "directional-percent-comparison",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s025"
+      ],
+      "transferTargets": [
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s012",
         "s017"
@@ -390,12 +1000,42 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s021",
       "studentName": "Repeated Percent Changes",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "successive-percent-change",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s022",
+        "s025"
+      ],
+      "transferTargets": [
+        "s022",
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s016"
       ],
@@ -408,12 +1048,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s022",
       "studentName": "Growth and Decay with Percents",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "growth-and-decay-transfer",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [
         "s021"
       ],
@@ -425,12 +1089,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s023",
       "studentName": "Percent Error",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "percent-error",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s025"
+      ],
+      "transferTargets": [
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s012",
         "x001"
@@ -445,12 +1137,40 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s024",
       "studentName": "Convert Units with Rates",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "proportional-unit-conversion",
+        "subskill": "unit-conversion",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s025"
+      ],
+      "transferTargets": [
+        "s025"
+      ],
       "requiredPrerequisites": [
         "s006",
         "x001"
@@ -465,12 +1185,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s025",
       "studentName": "Multi-Step Percent Challenges",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "applied-percent-reasoning",
+        "subskill": "multi-step-percent-and-proportional-modeling",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [
         "s014"
       ],
@@ -501,12 +1245,41 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 3,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s026",
       "studentName": "Integer Operations",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "foundational-operations",
+        "subskill": "integer-operations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s046",
+        "s049",
+        "s050",
+        "s051"
+      ],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -515,12 +1288,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s027",
       "studentName": "Fractions and Decimals",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "foundational-operations",
+        "subskill": "fraction-and-decimal-operations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -529,12 +1326,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s028",
       "studentName": "Order of Operations",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "foundational-operations",
+        "subskill": "order-of-operations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -543,12 +1364,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s029",
       "studentName": "Parts of Expressions",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "algebraic-foundations",
+        "subskill": "terms-coefficients-and-constants",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -557,12 +1402,36 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "s030",
       "studentName": "Simplifying Expressions",
+      "metadata": {
+        "domainCode": "QR",
+        "mathematicalDomain": "quantitative-reasoning",
+        "category": "algebraic-foundations",
+        "subskill": "simplifying-expressions",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
@@ -571,13 +1440,2617 @@
       ],
       "masteryEvidence": {
         "independentCorrect": 2,
-        "transferRequired": true
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s031",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "one-step-addition-and-subtraction",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s033",
+        "s046"
+      ],
+      "transferTargets": [],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s032",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "one-step-multiplication-and-division",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s033",
+        "s037",
+        "s046",
+        "s047",
+        "s055",
+        "s057",
+        "s058"
+      ],
+      "transferTargets": [],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s033",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "two-step-equations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [
+        "s034",
+        "s035",
+        "s036",
+        "s037",
+        "s038"
+      ],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s031",
+        "s032"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s034",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "distribution-in-equations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s033"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s035",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "combining-like-terms-in-equations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s033"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s036",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "variables-on-both-sides",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s033"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s037",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "fraction-and-decimal-equations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s032",
+        "s033"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s038",
+      "studentName": "Linear Equations",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-equations",
+        "subskill": "contextual-and-solution-check-equations",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "recovered-project-content",
+          "reviewStatus": "teacher-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s033"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "x001"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s039",
+      "studentName": "Triangle area and dimensions",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometry-and-spatial-reasoning",
+        "category": "area-and-perimeter",
+        "subskill": "triangle-area-and-positive-dimensions",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s040"
+      ],
+      "transferTargets": [
+        "s040"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s040",
+      "studentName": "Cylinder volume and parameters",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometry-and-spatial-reasoning",
+        "category": "volume",
+        "subskill": "cylinder-volume-and-parameters",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s041"
+      ],
+      "transferTargets": [
+        "s041"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s039"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s041",
+      "studentName": "Right-triangle angles and trigonometry",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometry-and-spatial-reasoning",
+        "category": "triangles",
+        "subskill": "right-triangle-angles-and-trigonometry",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s040"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s042",
+      "studentName": "Read bar graphs and changes",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "data-representations",
+        "subskill": "bar-graph-interpretation-and-fractional-change",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s043"
+      ],
+      "transferTargets": [
+        "s043"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s043",
+      "studentName": "Read dot plots and frequencies",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "data-representations",
+        "subskill": "dot-plot-thresholds-and-frequency",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s044"
+      ],
+      "transferTargets": [
+        "s044"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s042"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s044",
+      "studentName": "Weighted means for unequal groups",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "measures-of-center",
+        "subskill": "combined-weighted-means",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s045"
+      ],
+      "transferTargets": [
+        "s045"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s043"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s045",
+      "studentName": "Dependent probability without replacement",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probability",
+        "subskill": "dependent-probability-without-replacement",
+        "form": "skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s044"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s046",
+      "studentName": "Solve Basic Inequalities",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "inequalities",
+        "subskill": "solve-one--and-two-step-inequalities",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s047"
+      ],
+      "transferTargets": [
+        "s047"
+      ],
+      "requiredPrerequisites": [
+        "s031",
+        "s032"
+      ],
+      "supportingSkills": [
+        "s026"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s031",
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s047",
+      "studentName": "Reverse an Inequality with Negatives",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "inequalities",
+        "subskill": "reverse-inequality-with-negative-operations",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s048"
+      ],
+      "transferTargets": [
+        "s048"
+      ],
+      "requiredPrerequisites": [
+        "s046"
+      ],
+      "supportingSkills": [
+        "s032"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s046",
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s048",
+      "studentName": "Represent Inequality Solutions",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "inequalities",
+        "subskill": "interpret-and-represent-inequality-solutions",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s047"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s047"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s049",
+      "studentName": "Find Slope from Points and Tables",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "slope-and-rate-of-change",
+        "subskill": "slope-from-points-and-tables",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s050",
+        "s051",
+        "s052",
+        "s055",
+        "s056"
+      ],
+      "transferTargets": [
+        "s050",
+        "s051",
+        "s052"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s026",
+        "s006"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s026"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s050",
+      "studentName": "Read Slope from Graphs",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "slope-and-rate-of-change",
+        "subskill": "slope-from-graphs-and-special-lines",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s051",
+        "s052",
+        "s059"
+      ],
+      "transferTargets": [
+        "s051",
+        "s052"
+      ],
+      "requiredPrerequisites": [
+        "s049"
+      ],
+      "supportingSkills": [
+        "s026"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s049"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s051",
+      "studentName": "Interpret Rates of Change",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "slope-and-rate-of-change",
+        "subskill": "compare-and-interpret-rates-of-change",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s052",
+        "s054",
+        "s060"
+      ],
+      "transferTargets": [
+        "s052",
+        "s054"
+      ],
+      "requiredPrerequisites": [
+        "s049"
+      ],
+      "supportingSkills": [
+        "s050",
+        "s006",
+        "s026"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s049"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s052",
+      "studentName": "Recognize Linear Relationships",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-relationships",
+        "subskill": "recognize-linear-relationships-and-features",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s053",
+        "s055",
+        "s057"
+      ],
+      "transferTargets": [
+        "s053"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s049",
+        "s050",
+        "s051"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s049"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s053",
+      "studentName": "Match Linear Forms",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-relationships",
+        "subskill": "match-linear-representations",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s054",
+        "s056",
+        "s059"
+      ],
+      "transferTargets": [
+        "s054"
+      ],
+      "requiredPrerequisites": [
+        "s052"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s052"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s054",
+      "studentName": "Build Linear Models",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "linear-relationships",
+        "subskill": "construct-and-interpret-linear-models",
+        "form": "tier1-ar-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s060"
+      ],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s053"
+      ],
+      "supportingSkills": [
+        "s051"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s053"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s055",
+      "studentName": "Verify System Solutions",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "verify-system-solutions-and-interpret-intersections",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s056"
+      ],
+      "transferTargets": [
+        "s056"
+      ],
+      "requiredPrerequisites": [
+        "s032"
+      ],
+      "supportingSkills": [
+        "s049",
+        "s052"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s056",
+      "studentName": "Solve by Graphing",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "solve-systems-by-graphing",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s057"
+      ],
+      "transferTargets": [
+        "s057"
+      ],
+      "requiredPrerequisites": [
+        "s055"
+      ],
+      "supportingSkills": [
+        "s049",
+        "s053"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s055"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s057",
+      "studentName": "Solve by Substitution",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "solve-systems-by-substitution",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s058"
+      ],
+      "transferTargets": [
+        "s058"
+      ],
+      "requiredPrerequisites": [
+        "s056"
+      ],
+      "supportingSkills": [
+        "s032",
+        "s052"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s056",
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s058",
+      "studentName": "Solve by Elimination",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "solve-systems-by-elimination",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s059"
+      ],
+      "transferTargets": [
+        "s059"
+      ],
+      "requiredPrerequisites": [
+        "s057"
+      ],
+      "supportingSkills": [
+        "s032"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s057",
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s059",
+      "studentName": "Classify Systems",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "classify-systems-and-choose-an-efficient-method",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s060"
+      ],
+      "transferTargets": [
+        "s060"
+      ],
+      "requiredPrerequisites": [
+        "s058"
+      ],
+      "supportingSkills": [
+        "s050",
+        "s053"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s058"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s060",
+      "studentName": "Model Contextual Systems",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "systems-of-linear-equations",
+        "subskill": "model-and-interpret-contextual-systems",
+        "form": "systems-linear-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s059"
+      ],
+      "supportingSkills": [
+        "s054",
+        "s051"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s059"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s061",
+      "studentName": "Integer Exponents",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponent-rules",
+        "subskill": "interpret-integer-exponents",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s062",
+        "s064"
+      ],
+      "transferTargets": [
+        "s062",
+        "s064"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s029"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s062",
+      "studentName": "Product & Quotient Rules",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponent-rules",
+        "subskill": "apply-product-and-quotient-rules",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s063",
+        "s065"
+      ],
+      "transferTargets": [
+        "s063",
+        "s065"
+      ],
+      "requiredPrerequisites": [
+        "s061"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s061"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s063",
+      "studentName": "Nested Exponent Rules",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponent-rules",
+        "subskill": "apply-powers-of-powers,-products,-and-quotients",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s064",
+        "s065"
+      ],
+      "transferTargets": [
+        "s064",
+        "s065"
+      ],
+      "requiredPrerequisites": [
+        "s062"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s062"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s064",
+      "studentName": "Zero & Negative Exponents",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponent-rules",
+        "subskill": "rewrite-zero-and-negative-exponents",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s065"
+      ],
+      "transferTargets": [
+        "s065"
+      ],
+      "requiredPrerequisites": [
+        "s061"
+      ],
+      "supportingSkills": [
+        "s063"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s061",
+        "s027"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s065",
+      "studentName": "Multi-Rule Exponents",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponent-rules",
+        "subskill": "simplify-multi-rule-exponential-expressions",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s067"
+      ],
+      "transferTargets": [
+        "s067"
+      ],
+      "requiredPrerequisites": [
+        "s062",
+        "s063",
+        "s064"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s064",
+        "s063"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s066",
+      "studentName": "Exponential vs. Linear",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponential-relationships",
+        "subskill": "recognize-exponential-relationships-and-distinguish-linear",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s067"
+      ],
+      "transferTargets": [
+        "s067"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s061",
+        "s052"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s067",
+      "studentName": "Growth & Decay Models",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "exponential-relationships",
+        "subskill": "interpret-and-model-exponential-growth-and-decay",
+        "form": "exponents-exponential-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s066"
+      ],
+      "supportingSkills": [
+        "s065"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s066"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s068",
+      "studentName": "Recognize Quadratic Relationships",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "recognize-quadratic-relationships",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s075"
+      ],
+      "transferTargets": [
+        "s075"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s052"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s069",
+      "studentName": "Standard & Factored Forms",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "interpret-standard-and-factored-quadratic-forms",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s070",
+        "s071",
+        "s073"
+      ],
+      "transferTargets": [
+        "s070",
+        "s071",
+        "s073"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s029",
+        "s052"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s070",
+      "studentName": "GCF & Difference of Squares",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "factor-gcf-and-difference-of-squares",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s072"
+      ],
+      "transferTargets": [
+        "s072"
+      ],
+      "requiredPrerequisites": [
+        "s069"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s029"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s071",
+      "studentName": "Factor Integer Trinomials",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "factor-simple-integer-trinomials",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s072"
+      ],
+      "transferTargets": [
+        "s072"
+      ],
+      "requiredPrerequisites": [
+        "s069"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s029"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s072",
+      "studentName": "Solve by Factoring",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "solve-quadratics-by-factoring",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s074"
+      ],
+      "transferTargets": [
+        "s074"
+      ],
+      "requiredPrerequisites": [
+        "s070",
+        "s071"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s073",
+      "studentName": "Solve by Square Roots",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "solve-quadratics-by-square-roots",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s074"
+      ],
+      "transferTargets": [
+        "s074"
+      ],
+      "requiredPrerequisites": [
+        "s069"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s061"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s074",
+      "studentName": "Check Real Solutions",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "interpret-and-check-real-solutions",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [
+        "s075"
+      ],
+      "transferTargets": [
+        "s075"
+      ],
+      "requiredPrerequisites": [
+        "s072",
+        "s073"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s032"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s075",
+      "studentName": "Model & Compare Quadratics",
+      "metadata": {
+        "domainCode": "AR",
+        "mathematicalDomain": "algebraic-reasoning",
+        "category": "quadratic-relationships-and-solving",
+        "subskill": "model-and-compare-quadratic-relationships",
+        "form": "quadratics-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s068",
+        "s074"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s068",
+        "s052"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s076",
+      "studentName": "Perimeter & Rectangular Area",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "perimeter-and-rectangular-area",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [
+        "s077",
+        "s078",
+        "s080",
+        "s081",
+        "s082"
+      ],
+      "transferTargets": [
+        "s077",
+        "s078",
+        "s080",
+        "s081",
+        "s082"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s077",
+      "studentName": "Circumference & Circle Area",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "circumference-and-circle-area",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [
+        "s079"
+      ],
+      "transferTargets": [
+        "s079"
+      ],
+      "requiredPrerequisites": [
+        "s076"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s078",
+      "studentName": "Composite Area & Missing Dimensions",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "composite-area-and-missing-dimensions",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [
+        "s079"
+      ],
+      "transferTargets": [
+        "s079"
+      ],
+      "requiredPrerequisites": [
+        "s076"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s079",
+      "studentName": "Surface Area of Prisms & Cylinders",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "surface-area-of-prisms-and-cylinders",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s077",
+        "s078"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s076"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s080",
+      "studentName": "Prism & Cylinder Volume",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "prism-and-cylinder-volume-applications",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s076"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s081",
+      "studentName": "Pythagorean Missing-Side Reasoning",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "pythagorean-missing-side-reasoning",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [
+        "s082"
+      ],
+      "transferTargets": [
+        "s082"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [
+        "s076"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s076"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s082",
+      "studentName": "Scale & Geometric Unit Conversion",
+      "metadata": {
+        "domainCode": "GSR",
+        "mathematicalDomain": "geometric-and-spatial-reasoning",
+        "category": "geometric-spatial-reasoning-core-expansion",
+        "subskill": "scale-and-geometric-unit-conversion",
+        "form": "gsr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "gsr-core-v1",
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s076"
+      ],
+      "supportingSkills": [
+        "s081"
+      ],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s083",
+      "studentName": "Frequency Tables & Relative Frequency",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "frequency-tables-and-relative-frequency",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [
+        "s084",
+        "s088"
+      ],
+      "transferTargets": [
+        "s084",
+        "s088"
+      ],
+      "requiredPrerequisites": [],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s084",
+      "studentName": "Mean, Median & Mode",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "mean,-median,-and-mode",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [
+        "s085",
+        "s086"
+      ],
+      "transferTargets": [
+        "s085",
+        "s086"
+      ],
+      "requiredPrerequisites": [
+        "s083"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s083"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s085",
+      "studentName": "Range, Spread & Outlier Effects",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "range,-spread,-and-outlier-effects",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [
+        "s087"
+      ],
+      "transferTargets": [
+        "s087"
+      ],
+      "requiredPrerequisites": [
+        "s084"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s084"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s086",
+      "studentName": "Weighted Means in Context",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "weighted-means-in-context",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [
+        "s087"
+      ],
+      "transferTargets": [
+        "s087"
+      ],
+      "requiredPrerequisites": [
+        "s084"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s084"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s087",
+      "studentName": "Compare Distributions",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "compare-distributions-and-draw-conclusions",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s085",
+        "s086"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s085",
+        "s086"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s088",
+      "studentName": "Simple & Experimental Probability",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "simple,-complementary,-and-experimental-probability",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [
+        "s089"
+      ],
+      "transferTargets": [
+        "s089"
+      ],
+      "requiredPrerequisites": [
+        "s083"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s083"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
+      }
+    },
+    {
+      "id": "s089",
+      "studentName": "Conditional Probability from Tables",
+      "metadata": {
+        "domainCode": "PSR",
+        "mathematicalDomain": "probabilistic-and-statistical-reasoning",
+        "category": "probabilistic-statistical-reasoning-core-expansion",
+        "subskill": "conditional-probability-from-two-way-tables",
+        "form": "psr-core-skill-coverage",
+        "calculatorPolicy": "not-required",
+        "assessmentTags": [
+          "TSIA2-practice-candidate"
+        ],
+        "teks": {
+          "state": "pending",
+          "alignments": []
+        },
+        "provenance": {
+          "state": "research-backed-original-draft",
+          "reviewStatus": "qualified-review-required"
+        }
+      },
+      "frontierJourney": "psr-core-v1",
+      "successors": [],
+      "transferTargets": [],
+      "requiredPrerequisites": [
+        "s088"
+      ],
+      "supportingSkills": [],
+      "alternativePrerequisiteGroups": [],
+      "regressionTargets": [
+        "s088"
+      ],
+      "masteryEvidence": {
+        "independentCorrect": 2,
+        "minimumDistinctContexts": 2,
+        "transferRequired": true,
+        "highHintUsePreventsMasteredStatus": true,
+        "masteryAvailable": true
       }
     },
     {
       "id": "x001",
       "studentName": "Foundational number skills",
       "handoff": true,
+      "successors": [],
+      "transferTargets": [],
       "requiredPrerequisites": [],
       "supportingSkills": [],
       "alternativePrerequisiteGroups": [],
