@@ -1,4 +1,4 @@
-import { firebaseConfig, firebaseIsConfigured, firebaseSdkVersion } from './firebase-config.js';
+import { firebaseAuthIsConfigured, firebaseConfig, firebaseSdkVersion, firebaseSyncIsConfigured } from './firebase-config.js';
 
 const sdk = name => `https://www.gstatic.com/firebasejs/${firebaseSdkVersion}/firebase-${name}.js`;
 const friendlyError = error => {
@@ -21,18 +21,20 @@ export function createAuthStateMachine({ client, onChange = () => {} }) {
 }
 
 export async function createFirebaseClient(config = firebaseConfig, { loadSdk = name => import(sdk(name)) } = {}) {
-  if (!firebaseIsConfigured(config)) return disabledClient();
+  if (!firebaseAuthIsConfigured(config)) return disabledClient();
   try {
-    const [{ initializeApp }, authSdk, functionsSdk, appCheckSdk] = await Promise.all([loadSdk('app'), loadSdk('auth'), loadSdk('functions'), loadSdk('app-check')]);
+    // Authentication is deliberately independent from protected sync. The
+    // Spark evaluation site must never initialize Functions or App Check.
+    const [{ initializeApp }, authSdk] = await Promise.all([loadSdk('app'), loadSdk('auth')]);
     const app = initializeApp(config);
-    appCheckSdk.initializeAppCheck(app, { provider: new appCheckSdk.ReCaptchaEnterpriseProvider(config.appCheckSiteKey), isTokenAutoRefreshEnabled: true });
     const auth = authSdk.getAuth(app);
-    await authSdk.setPersistence(auth, authSdk.browserSessionPersistence);
+    await authSdk.setPersistence(auth, authSdk.browserLocalPersistence);
     const provider = new authSdk.GoogleAuthProvider();
     // Do not add scopes: Firebase's identity scope is the only requested data.
-    const functions = functionsSdk.getFunctions(app, config.functionsRegion);
-    return {
-      mode: 'ready',
+    const authClient = {
+      mode: 'auth-only',
+      authEnabled: true,
+      syncEnabled: false,
       subscribeAuthState: callback => authSdk.onAuthStateChanged(auth, callback, error => callback(null, error)),
       signInWithGoogle: async () => {
         try { return await authSdk.signInWithPopup(auth, provider); }
@@ -45,6 +47,27 @@ export async function createFirebaseClient(config = firebaseConfig, { loadSdk = 
         }
       },
       signOut: () => authSdk.signOut(auth),
+      submitAttemptProposal: syncUnavailable,
+      startQuestionSession: syncUnavailable,
+      recordHintUse: syncUnavailable,
+      loadStudentSnapshot: syncUnavailable,
+      listStudentMemberships: syncUnavailable,
+      joinClass: syncUnavailable,
+      leaveClass: syncUnavailable,
+      errorMessage: friendlyError
+    };
+    if (!firebaseSyncIsConfigured(config)) return authClient;
+
+    // This branch is intentionally unreachable for the free Spark evaluation
+    // configuration. It remains a separate fail-closed seam for a future,
+    // explicitly approved protected-sync release.
+    const [functionsSdk, appCheckSdk] = await Promise.all([loadSdk('functions'), loadSdk('app-check')]);
+    appCheckSdk.initializeAppCheck(app, { provider: new appCheckSdk.ReCaptchaEnterpriseProvider(config.appCheckSiteKey), isTokenAutoRefreshEnabled: true });
+    const functions = functionsSdk.getFunctions(app, config.functionsRegion);
+    return {
+      ...authClient,
+      mode: 'ready',
+      syncEnabled: true,
       submitAttemptProposal: proposal => functionsSdk.httpsCallable(functions, 'submitAttempt')(onlyCallableFields(proposal)).then(result => result.data),
       startQuestionSession: proposal => functionsSdk.httpsCallable(functions, 'startQuestionSession')(onlySessionFields(proposal)).then(result => result.data),
       recordHintUse: receipt => functionsSdk.httpsCallable(functions, 'recordHintUse')(onlyHintFields(receipt)).then(result => result.data),
@@ -52,7 +75,6 @@ export async function createFirebaseClient(config = firebaseConfig, { loadSdk = 
       listStudentMemberships: () => functionsSdk.httpsCallable(functions, 'listStudentMemberships')({}).then(result => result.data),
       joinClass: proposal => functionsSdk.httpsCallable(functions, 'joinClass')(onlyJoinFields(proposal)).then(result => result.data),
       leaveClass: proposal => functionsSdk.httpsCallable(functions, 'leaveClass')(onlyLeaveFields(proposal)).then(result => result.data),
-      errorMessage: friendlyError
     };
   } catch (error) {
     return { ...disabledClient(), mode: 'error', message: friendlyError(error) };
@@ -90,6 +112,10 @@ function onlySnapshotFields(proposal) {
   if (pageSize !== undefined) result.pageSize = pageSize;
   if (cursor !== undefined) result.cursor = cursor;
   return result;
+}
+
+async function syncUnavailable() {
+  throw new Error('Cloud progress sync is not enabled. Practice progress remains on this Chromebook.');
 }
 
 function disabledClient() {

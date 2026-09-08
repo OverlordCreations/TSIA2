@@ -19,8 +19,8 @@
       </div>
       <div class="account-actions">
         <p id="accountStatus" class="account-status" role="status" aria-live="polite">Preparing practice on this device.</p>
-        <p id="syncStatus" class="account-status" role="status" aria-live="polite">First-time loading needs a connection. After it loads, practice can save on this device.</p>
-        <button id="signInButton" class="quiet-button" type="button" disabled>Sign in to save progress</button>
+        <p id="syncStatus" class="account-status" role="status" aria-live="polite">Practice progress stays on this Chromebook. It is not synced to a teacher account.</p>
+        <button id="signInButton" class="quiet-button" type="button" disabled>Sign in with Google</button>
         <button id="signOutButton" class="quiet-button" type="button" hidden>Sign out</button>
         <button id="restartButton" class="quiet-button" type="button" disabled>View my progress</button>
         <a class="help-link" href="help.html">Help and how to use this site</a>
@@ -43,6 +43,8 @@
       <h2 id="entryHeading" tabindex="-1">Start with a short TSIA2 math check</h2>
       <p id="resumeMessage" class="entry-copy" hidden></p>
       <div id="resumeActions" class="resume-actions" hidden></div>
+      <section id="startingCheckPanel" class="starting-check-panel" aria-labelledby="startingCheckHeading" hidden></section>
+      <section id="dayOnePanel" class="day-one-panel" aria-labelledby="dayOneHeading" hidden></section>
       <section id="recommendedNext" class="recommended-next" aria-labelledby="recommendedNextHeading"></section>
       <div id="domainChoices" class="domain-grid" aria-label="TSIA2 mathematics domains"></div>
       <p id="homeAnnouncement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -81,7 +83,7 @@
       <p id="questionChoiceHelp" class="visually-hidden">Choose one answer.</p>
       <p id="calculatorGuidance" class="calculator-guidance" role="note" hidden></p>
       <p id="submissionStatus" class="submission-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
-      <section class="help-panel" aria-labelledby="helpHeading">
+      <section id="helpPanel" class="help-panel" aria-labelledby="helpHeading">
         <h3 id="helpHeading">Need a nudge?</h3>
         <p>Help is welcome. Start with one small step, then use a later problem to try the idea on your own.</p>
         <div class="help-row">

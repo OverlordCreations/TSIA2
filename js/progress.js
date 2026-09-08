@@ -81,6 +81,9 @@ export function buildGrowthSummary({ state, questions = [] }) {
 
   const validAttempts = (Array.isArray(state?.attempts) ? state.attempts : [])
     .flatMap(attempt => {
+      // The Day 1 starting check remains a separate reference point. It must
+      // not make later adaptive practice look stronger or weaker than it is.
+      if (attempt?.startingCheck === true) return [];
       const question = questionsById.get(attempt?.questionId);
       const hintLevel = attempt?.assistance?.hintLevel;
       if (!question || typeof attempt?.correct !== 'boolean' || !Number.isInteger(hintLevel) || hintLevel < 0 || hintLevel > 3) return [];

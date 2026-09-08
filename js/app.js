@@ -17,6 +17,7 @@ import { validHintAcknowledgement, validSessionAcknowledgement } from './attempt
 import { renderRepresentation } from './representations.js';
 import { nextHint, revealedHint } from './hints.js';
 import { isEvaluationRelease } from './release-access.js';
+import { STARTING_CHECK_TOTAL, activeStartingCheck, buildDayOneGrowth, createStartingCheck, currentStartingCheckQuestionId, dayOneComparisonCopy, recordStartingCheckResponse, sanitizeStartingCheck, startingCheckRecommendedDomain } from './starting-check.js';
 
 function setStartupControls(disabled) {
   document.querySelector('#signInButton').disabled = disabled;
@@ -127,18 +128,44 @@ let persistenceNoticeCopy = '';
 let lastSyncStatusCopy = 'After this page loads, local practice is available on this device.';
 const domains = TSIA2_DOMAINS;
 
+function startingCheckStateIsCompatible(candidate) {
+  if (candidate?.startingCheck === undefined) return true;
+  const sanitized = sanitizeStartingCheck(candidate.startingCheck, { questionsById, questionVersion: questionData.version });
+  if (!sanitized) return false;
+  if (sanitized.status === 'in-progress' && ((candidate.hintLevel ?? 0) !== 0 || candidate.currentQuestionId !== sanitized.questionIds[sanitized.index])) return false;
+  candidate.startingCheck = sanitized;
+  return true;
+}
+
+function savedStateIsCompatible(candidate) {
+  if (!startingCheckStateIsCompatible(candidate)) return false;
+  if (isSavedStateCompatible(candidate, questionsById, skillsById)) return true;
+  // A completed baseline can legitimately exist before the learner has made
+  // any normal adaptive-practice attempt. The engine correctly rejects an
+  // otherwise empty terminal practice state, so retain only this exact,
+  // separately validated starting-check shape here.
+  return candidate?.startingCheck?.status === 'complete' && candidate.currentQuestionId === null &&
+    Array.isArray(candidate.attempts) && candidate.attempts.length === 0 &&
+    candidate.mastery && typeof candidate.mastery === 'object' && !Array.isArray(candidate.mastery) &&
+    Object.keys(candidate.mastery).length === 0 && (candidate.safeExit === null || candidate.safeExit === undefined) &&
+    (candidate.hintLevel ?? 0) === 0 && (candidate.pendingQuestionIds === undefined ||
+      (candidate.pendingQuestionIds && typeof candidate.pendingQuestionIds === 'object' && !Array.isArray(candidate.pendingQuestionIds) &&
+        Object.entries(candidate.pendingQuestionIds).every(([domainCode, questionId]) =>
+          ['QR', 'AR', 'GSR', 'PSR'].includes(domainCode) && typeof questionId === 'string' && questionsById.get(questionId)?.metadata?.domainCode === domainCode)));
+}
+
 function loadState() {
   // Read once at startup/identity changes so malformed saved attempts are
   // quarantined and explained even while the student is practicing offline.
   persistence.readQueue();
   const saved = persistence.readState();
-  if (isSavedStateCompatible(saved, questionsById, skillsById)) return saved;
+  if (savedStateIsCompatible(saved)) return saved;
   if (saved !== null) persistence.reportNotice?.('saved-state-rejected');
   // v1.0 appends opaque IDs rather than renumbering old content. A v0.9
   // browser record can therefore be preserved only after both persistence
   // sanitization and current-engine validation succeed.
   const prior = persistence.readPriorVersionState?.('0.9.0');
-  if (isSavedStateCompatible(prior, questionsById, skillsById)) {
+  if (savedStateIsCompatible(prior)) {
     persistence.writeState(prior);
     return prior;
   }
@@ -156,11 +183,12 @@ const els = {
   practiceContext: document.querySelector('#practiceContext'),
   entryPanel: document.querySelector('#entryPanel'), entryHeading: document.querySelector('#entryHeading'), homeAnnouncement: document.querySelector('#homeAnnouncement'),
   resumeMessage: document.querySelector('#resumeMessage'), resumeActions: document.querySelector('#resumeActions'),
+  startingCheckPanel: document.querySelector('#startingCheckPanel'), dayOnePanel: document.querySelector('#dayOnePanel'),
   recommendedNext: document.querySelector('#recommendedNext'), domainChoices: document.querySelector('#domainChoices'), questionCard: document.querySelector('#questionCard'),
   prompt: document.querySelector('#questionPrompt'), questionAnnouncement: document.querySelector('#questionAnnouncement'), representation: document.querySelector('#questionRepresentation'), choices: document.querySelector('#answerChoices'), calculatorGuidance: document.querySelector('#calculatorGuidance'), submissionStatus: document.querySelector('#submissionStatus'),
   feedback: document.querySelector('#feedback'), next: document.querySelector('#nextButton'), progressButton: document.querySelector('#progressButton'),
   level: document.querySelector('#levelLabel'), attempt: document.querySelector('#attemptLabel'),
-  hint: document.querySelector('#hint'), hintButton: document.querySelector('#hintButton'),
+  hint: document.querySelector('#hint'), hintButton: document.querySelector('#hintButton'), helpPanel: document.querySelector('#helpPanel'),
   restart: document.querySelector('#restartButton'), accountStatus: document.querySelector('#accountStatus'), syncStatus: document.querySelector('#syncStatus'),
   signIn: document.querySelector('#signInButton'), signOut: document.querySelector('#signOutButton'),
   classPanel: document.querySelector('#classPanel'), classStatus: document.querySelector('#classStatus'), classJoinForm: document.querySelector('#classJoinForm'), classJoinCode: document.querySelector('#classJoinCode'), classJoinButton: document.querySelector('#classJoinButton'), classRetry: document.querySelector('#classRetryButton'), classMemberships: document.querySelector('#classMemberships'),
@@ -208,9 +236,16 @@ function refreshStateForUser(user) {
   renderPersistenceNotices();
 }
 function resetSyncStatusForIdentity(user, { pending = false } = {}) {
+  if (firebaseClient?.syncEnabled !== true) {
+    setSyncStatus(user
+      ? 'Your Google account is connected. Practice progress stays on this Chromebook and is not synced to a teacher account.'
+      : 'Practice progress stays on this Chromebook. It is not synced to a teacher account.');
+    return;
+  }
   setSyncStatus(studentSafeSyncStatusCopy({ signedIn:Boolean(user), pending }));
 }
 function resetCurrentView() {
+  if (inStartingCheck()) { renderQuestion(); return; }
   switch (getInitialView(state)) { case 'safe-exit': renderSafeExit(); break; case 'complete': renderComplete(); break; default: renderDomainSelection(); }
 }
 function identityIsCurrent(snapshot) { return authGeneration === snapshot.generation && signedInUser?.uid === snapshot.uid && persistence === snapshot.persistence; }
@@ -333,8 +368,8 @@ function showLegacyMigration(user) {
   // A pre-release-scoped browser state is legacy only. It is considered at
   // this explicit consent boundary and is never silently attached or erased.
   const currentUnsigned = unsignedPersistence.readState() ?? unsignedPersistence.findUnscopedState?.();
-  const legacyState = prepareLegacyMigration({ uid: user.uid, questionVersion: questionData.version, legacyState: currentUnsigned }) ? currentUnsigned : unsignedPersistence.findLegacyState();
-  const pending = prepareLegacyMigration({ uid: user.uid, questionVersion: questionData.version, legacyState });
+  const legacyState = prepareLegacyMigration({ uid: user.uid, questionVersion: questionData.version, legacyState: currentUnsigned, questionsById }) ? currentUnsigned : unsignedPersistence.findLegacyState();
+  const pending = prepareLegacyMigration({ uid: user.uid, questionVersion: questionData.version, legacyState, questionsById });
   if (!pending || persistence.getMigration()?.migrationId === pending.migrationId) return;
   els.migrationPanel.hidden = false;
   els.confirmMigration.onclick = () => {
@@ -342,7 +377,7 @@ function showLegacyMigration(user) {
     // explicitly consented, provisional legacy evidence.
     const queueReceipt = persistence.transferQueueFrom(unsignedPersistence);
     persistence.setMigration({ migrationId: pending.migrationId, status: queueReceipt.conflicts ? 'consented-with-queue-conflicts' : 'consented-local-only', consentedAt: new Date().toISOString(), snapshotFingerprint: pending.snapshotFingerprint, queueReceipt });
-    if ((state.attempts?.length ?? 0) === 0 && pending.legacyState && isSavedStateCompatible(pending.legacyState, questionsById, skillsById)) {
+    if ((state.attempts?.length ?? 0) === 0 && pending.legacyState && savedStateIsCompatible(pending.legacyState)) {
       state = pending.legacyState;
       saveState();
       renderDomainSelection();
@@ -353,14 +388,16 @@ function showLegacyMigration(user) {
   els.dismissMigration.onclick = () => { els.migrationPanel.hidden = true; };
 }
 async function initializeIdentity() {
-  firebaseClient = evaluationRelease
-    ? await createFirebaseClient({ enabled: false })
-    : await createFirebaseClient();
+  // Owner-evaluation releases may use the public Spark Google identity
+  // provider. The evaluation's `cloudEnabled: false` marker still keeps the
+  // protected Functions/App Check sync path disabled inside the client.
+  firebaseClient = await createFirebaseClient();
   classController = createStudentClassController({ client: firebaseClient, render: (classState, dispatch) => renderStudentClassPanel(els, classState, dispatch) });
-  classController.start();
+  if (firebaseClient.syncEnabled === true) classController.start();
+  else els.classPanel.hidden = true;
   if (firebaseClient.mode === 'disabled') {
     renderAccountStatus(evaluationRelease
-      ? 'Sign-in is disabled for this evaluation build. Practice saves on this device only.'
+      ? 'Sign-in is unavailable in this build. Practice saves on this Chromebook only.'
       : 'Practice is available without signing in. Sign-in will be enabled for the approved pilot.', { signedIn: false });
     els.signIn.disabled = true;
     return;
@@ -380,6 +417,11 @@ async function initializeIdentity() {
     signedInUser = user; authoritativeSessions.clear(); sessionPromises.clear();
     refreshStateForUser(user); resetSyncStatusForIdentity(user, { pending: Boolean(user) }); resetCurrentView();
     if (!user) { renderAccountStatus('Practice is available without signing in.', { signedIn: false }); return; }
+    if (firebaseClient.syncEnabled !== true) {
+      renderAccountStatus(`Signed in as ${user.displayName ?? 'this student'}. Practice progress stays on this Chromebook.`, { signedIn: true });
+      showLegacyMigration(user);
+      return;
+    }
     renderAccountStatus(`Signed in as ${user.displayName ?? 'this student'}. Syncing saved progress…`, { signedIn: true });
     showLegacyMigration(user); syncPendingAttempts({ generation: authGeneration, uid: user.uid, persistence });
   });
@@ -393,7 +435,36 @@ async function initializeIdentity() {
   });
   window.addEventListener('online', () => syncPendingAttempts());
 }
-function currentQuestion() { return questionsById.get(state.currentQuestionId); }
+function currentQuestion() {
+  const startingCheckQuestionId = currentStartingCheckQuestionId(state);
+  return questionsById.get(startingCheckQuestionId ?? state.currentQuestionId);
+}
+function inStartingCheck() { return Boolean(activeStartingCheck(state)); }
+function startStartingCheck() {
+  if (state.startingCheck?.status === 'complete') return;
+  if (activeStartingCheck(state)) { renderQuestion(); return; }
+  const check = createStartingCheck({ questions: questionData.questions, questionVersion: questionData.version, attemptCountAtStart: state.attempts?.length ?? 0 });
+  if (!check) {
+    els.startingCheckPanel.replaceChildren();
+    const heading = document.createElement('h3'); heading.textContent = 'Starting check unavailable';
+    const message = document.createElement('p'); message.textContent = 'We could not prepare the starting check right now. Choose a math area below to begin practice.';
+    els.startingCheckPanel.append(heading, message);
+    els.startingCheckPanel.hidden = false;
+    els.homeAnnouncement.textContent = message.textContent;
+    return;
+  }
+  const unanswered = currentQuestion();
+  if (unanswered?.metadata?.domainCode) {
+    state.pendingQuestionIds ??= {};
+    state.pendingQuestionIds[unanswered.metadata.domainCode] = unanswered.id;
+  }
+  state.startingCheck = check;
+  state.currentQuestionId = check.questionIds[0];
+  state.hintLevel = 0;
+  state.safeExit = null;
+  saveState();
+  renderQuestion();
+}
 function skillNameForId(skillId) { return safeStudentSkillName(skillsById.get(skillId)); }
 function currentDomainName() {
   const code = currentQuestion()?.metadata?.domainCode;
@@ -549,11 +620,72 @@ function openSafePlan(plan) {
   renderSafeExit();
 }
 
+function renderStartingCheckPanel() {
+  els.startingCheckPanel.replaceChildren();
+  els.startingCheckPanel.hidden = true;
+  if (state.startingCheck?.status === 'complete') return;
+  const check = activeStartingCheck(state);
+  const heading = document.createElement('h3'); heading.id = 'startingCheckHeading';
+  const copy = document.createElement('p');
+  const details = document.createElement('ul');
+  if (check) {
+    heading.textContent = 'Finish your 20-question starting check';
+    copy.textContent = `You are on question ${check.index + 1} of ${STARTING_CHECK_TOTAL}. Your answers are saved on this device. Finish the check to see your Day 1 starting point.`;
+  } else {
+    heading.textContent = 'Take the 20-question starting check';
+    copy.textContent = 'Start here to get a clear Day 1 picture across all four TSIA2 math areas. You will answer one question at a time, and your results will appear after the last question.';
+  }
+  const item = document.createElement('li'); item.textContent = 'Work one problem at a time and choose the answer that makes the most sense to you.';
+  const itemTwo = document.createElement('li'); itemTwo.textContent = 'When you finish, you will see where to begin practice next.';
+  details.append(item, itemTwo);
+  const action = makeButton(check ? 'Resume starting check' : 'Take the 20-question starting check', 'next-button', startStartingCheck);
+  action.setAttribute('aria-describedby', 'startingCheckHeading');
+  els.startingCheckPanel.append(heading, copy, details, action);
+  els.startingCheckPanel.hidden = false;
+}
+
+function renderDayOnePanel() {
+  els.dayOnePanel.replaceChildren();
+  const growth = buildDayOneGrowth(state, { questionsById });
+  if (!growth) { els.dayOnePanel.hidden = true; return; }
+  const heading = document.createElement('h3'); heading.id = 'dayOneHeading'; heading.textContent = 'Your Day 1 starting point';
+  const completed = new Date(growth.completedAt);
+  const date = Number.isNaN(completed.getTime()) ? 'an earlier day' : completed.toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' });
+  const copy = document.createElement('p'); copy.textContent = `Starting check completed ${date}: ${growth.totalCorrect} of ${growth.totalQuestions} correct. This is a practice reference, not a TSIA2 score.`;
+  const grid = document.createElement('div'); grid.className = 'day-one-grid';
+  for (const domain of domains) {
+    const summary = growth.domains[domain.code];
+    const card = document.createElement('article'); card.className = 'day-one-domain';
+    const title = document.createElement('h4'); title.textContent = `${domain.code} — ${domain.name}`;
+    const details = document.createElement('p'); details.textContent = dayOneComparisonCopy(summary);
+    card.append(title, details); grid.append(card);
+  }
+  const caveat = document.createElement('p'); caveat.textContent = 'Later practice only compares new questions you answered without hints. A small number of questions cannot show a reliable change yet.';
+  const recommendedDomain = startingCheckRecommendedDomain(state);
+  const plan = recommendedDomain ? getDomainPlan(recommendedDomain) : null;
+  const action = plan?.selectedQuestionId
+    ? makeButton(`Start practice in ${domains.find(domain => domain.code === recommendedDomain)?.name ?? recommendedDomain}`, 'next-button', () => startDomain(recommendedDomain, plan))
+    : null;
+  if (action) action.setAttribute('aria-describedby', 'dayOneHeading');
+  els.dayOnePanel.append(heading, copy, grid, caveat, ...(action ? [action] : []));
+  els.dayOnePanel.hidden = false;
+}
+
 function renderDomainSelection({ safeExit = false } = {}) {
   pendingEvidence = null;
-  els.questionCard.hidden = true; els.entryPanel.hidden = false; els.practiceContext.hidden = true; els.classPanel.hidden = false;
+  els.questionCard.hidden = true; els.entryPanel.hidden = false; els.practiceContext.hidden = true; els.classPanel.hidden = firebaseClient?.syncEnabled !== true;
   setSkipLinkTarget('progress');
   els.pageTitle.textContent = 'Your TSIA2 Math Progress';
+  if (activeStartingCheck(state)) {
+    els.entryHeading.textContent = 'Finish your starting check';
+    els.resumeMessage.hidden = true; els.resumeActions.hidden = true; els.resumeActions.replaceChildren();
+    els.recommendedNext.replaceChildren(); els.domainChoices.replaceChildren(); els.dayOnePanel.hidden = true;
+    els.classPanel.hidden = true;
+    renderStartingCheckPanel();
+    els.homeAnnouncement.textContent = `Your starting check is ready to resume at question ${activeStartingCheck(state).index + 1} of ${STARTING_CHECK_TOTAL}.`;
+    els.startingCheckPanel.querySelector('button')?.focus();
+    return;
+  }
   els.entryHeading.textContent = safeExit ? 'Choose what to practice next' : 'Your four TSIA2 math areas';
   const current = currentQuestion();
   const progress = buildDomainProgress({ state, skills, questions: questionData.questions });
@@ -569,6 +701,8 @@ function renderDomainSelection({ safeExit = false } = {}) {
   const globalDomain = pendingDomain?.domain.code ?? currentCode ?? questionsById.get(globalPlan?.selectedQuestionId)?.metadata?.domainCode ?? 'QR';
   const canResume = !safeExit && Boolean(current || pendingDomain);
   els.resumeMessage.hidden = true; els.resumeActions.hidden = true; els.resumeActions.replaceChildren();
+  renderStartingCheckPanel();
+  renderDayOnePanel();
   renderRecommendedNext(globalPlan, globalDomain, { canResume, resumeDomainName: pendingDomain?.domain.name ?? null });
   els.domainChoices.replaceChildren();
   for (const domain of progress) {
@@ -601,7 +735,9 @@ function renderDomainSelection({ safeExit = false } = {}) {
     ? `Resume the unanswered ${pendingDomain?.domain.name ?? currentDomainName()} question.`
     : domainPlanText(globalPlan, { selectedDomain:false });
   els.homeAnnouncement.textContent = `${safeExit ? 'Your practice choices are ready.' : 'Your TSIA2 Math Progress is ready.'} ${homeRecommendation}`;
-  els.recommendedNext.querySelector('button')?.focus();
+  const startingCheckAction = els.startingCheckPanel.querySelector('button');
+  if (startingCheckAction) startingCheckAction.focus();
+  else els.recommendedNext.querySelector('button')?.focus();
 }
 
 function startDomain(domainCode, selection = getDomainPlan(domainCode)) {
@@ -641,6 +777,7 @@ function renderSessionSummary(variant) {
   const nextDomain = nextQuestion?.metadata?.domainCode ?? 'QR';
   const responseCount = state.attempts.length;
   els.questionCard.hidden = true; els.entryPanel.hidden = false; els.classPanel.hidden = true;
+  els.startingCheckPanel.hidden = true; els.dayOnePanel.hidden = true;
   setSkipLinkTarget('summary');
   els.practiceContext.hidden = false;
   els.pageTitle.textContent = 'TSIA2 Math Practice';
@@ -695,6 +832,7 @@ function renderQuestion() {
   if (state.safeExit) return renderSafeExit();
   const question = currentQuestion();
   if (!question) return renderComplete();
+  const startingCheck = activeStartingCheck(state);
   const skill = skillsById.get(question.skillId);
   els.entryPanel.hidden = true; els.questionCard.hidden = false; els.classPanel.hidden = true;
   setSkipLinkTarget('question');
@@ -702,17 +840,19 @@ function renderQuestion() {
   els.pageTitle.textContent = 'TSIA2 Math Practice';
   els.skillName.textContent = safeStudentSkillName(skill); els.skillStatus.textContent = getSkillStatus(state, skill, questionsById);
   els.progress.style.width = '0%';
-  els.progressMessage.textContent = question.role === 'recovery' ? 'Try this smaller step, then keep building from there.'
+  els.progressMessage.textContent = startingCheck ? `Starting check: question ${startingCheck.index + 1} of ${STARTING_CHECK_TOTAL}. Choose the answer that makes the most sense to you.`
+    : question.role === 'recovery' ? 'Try this smaller step, then keep building from there.'
     : question.role === 'transfer' ? 'This problem uses the same idea in a new situation.' : 'Start where you are. We’ll take one problem at a time.';
-  els.level.textContent = levelLabels[question.difficulty] ?? 'Math practice'; els.attempt.textContent = `Question ${state.attempts.length + 1}`;
+  els.level.textContent = startingCheck ? 'Starting check' : (levelLabels[question.difficulty] ?? 'Math practice');
+  els.attempt.textContent = startingCheck ? `Question ${startingCheck.index + 1} of ${STARTING_CHECK_TOTAL}` : `Question ${state.attempts.length + 1}`;
   els.prompt.textContent = studentPromptCopy(question.prompt); renderRepresentation(els.representation, question.representation); els.choices.setAttribute('aria-describedby', question.representation ? 'questionChoiceHelp questionRepresentation' : 'questionChoiceHelp'); els.choices.replaceChildren(); els.feedback.hidden = true; els.feedback.className = 'feedback';
   els.calculatorGuidance.textContent = calculatorGuidanceCopy(question); els.calculatorGuidance.hidden = false; setSubmissionState();
-  els.next.hidden = true; els.progressButton.hidden = true; els.hint.hidden = true; els.hintButton.hidden = false; els.hintButton.disabled = false; els.hintButton.textContent = 'Show me a small step';
+  els.next.hidden = true; els.progressButton.hidden = true; els.hint.hidden = true; els.helpPanel.hidden = Boolean(startingCheck); els.hintButton.hidden = Boolean(startingCheck); els.hintButton.disabled = Boolean(startingCheck); els.hintButton.textContent = 'Show me a small step';
   // A persisted hint is assistance already used, not a new interaction.  It
   // must appear again after reload without incrementing state or contacting
   // the optional authoritative hint path.
   const savedHint = revealedHint(question, state.hintLevel ?? 0);
-  if (savedHint) {
+  if (savedHint && !startingCheck) {
     renderHint(savedHint.text, question.prompt);
     els.hint.hidden = false;
     els.hintButton.textContent = savedHint.hasMore ? 'Show me the next step' : 'All small steps shown';
@@ -725,7 +865,9 @@ function renderQuestion() {
   els.questionAnnouncement.textContent = '';
   const announceAndFocus = () => {
     if (questionGeneration !== renderedQuestionGeneration || currentQuestion()?.id !== question.id) return;
-    els.questionAnnouncement.textContent = `New problem. ${safeStudentSkillName(skill)}. Question ${state.attempts.length + 1}.`;
+    els.questionAnnouncement.textContent = startingCheck
+      ? `Starting check. Question ${startingCheck.index + 1} of ${STARTING_CHECK_TOTAL}.`
+      : `New problem. ${safeStudentSkillName(skill)}. Question ${state.attempts.length + 1}.`;
     els.prompt.focus({ preventScroll:true });
   };
   if (typeof window.requestAnimationFrame === 'function') window.requestAnimationFrame(announceAndFocus);
@@ -737,9 +879,39 @@ async function answer(question, choiceId) {
   // The queue transmits only the five callable fields; local conclusions are
   // labeled non-authoritative and remain for offline continuity only.
   if (activeInteraction) return;
+  const answeringStartingCheck = inStartingCheck();
   const binding = sessionBinding(question); const before = structuredClone(state); let committed = false; let focusTarget = null;
   const interaction = setInteraction('answer'); if (!interaction) return; setSubmissionState(choiceId); lockChoices();
   try {
+    if (answeringStartingCheck) {
+      const choice = question.choices.find(item => item.id === choiceId);
+      if (!choice) throw new Error('The selected answer was not available.');
+      const startingCheckResult = recordStartingCheckResponse(state, { questionId: question.id, correct: choice.correct, questionsById });
+      if (!startingCheckResult) throw new Error('The starting check could not save this answer safely.');
+      state.currentQuestionId = startingCheckResult.nextQuestionId;
+      state.safeExit = null;
+      state.hintLevel = 0;
+      saveState();
+      committed = true;
+      els.feedback.hidden = false; els.feedback.className = 'feedback coach'; els.feedback.replaceChildren();
+      const label = document.createElement('strong');
+      const explanation = document.createElement('p'); explanation.textContent = 'Your response has been recorded.';
+      const nextStep = document.createElement('p');
+      if (startingCheckResult.complete) {
+        label.textContent = 'Starting check complete';
+        nextStep.textContent = 'Your Day 1 starting point is ready. Choose your next practice step.';
+        els.next.textContent = 'See my Day 1 starting point';
+        els.next.onclick = renderDomainSelection;
+      } else {
+        label.textContent = 'Answer saved';
+        nextStep.textContent = `Continue to question ${activeStartingCheck(state)?.index + 1} of ${STARTING_CHECK_TOTAL}. Results will appear after the last question.`;
+        els.next.textContent = 'Continue';
+        els.next.onclick = renderQuestion;
+      }
+      els.feedback.append(label, explanation, nextStep);
+      els.next.hidden = false; els.progressButton.hidden = true; focusTarget = els.feedback;
+      return;
+    }
     const authoritativeSession = await ensureAuthoritativeQuestionSession(question);
     if (!bindingIsCurrent(binding)) return;
     const proposal = createAttemptProposal({ sessionId: authoritativeSession.sessionId, releaseId, question, choiceId });
@@ -766,7 +938,7 @@ async function answer(question, choiceId) {
   } catch {
     if (!committed) {
       const recovered = persistence.recoverPendingAttempt?.();
-      if (isSavedStateCompatible(recovered, questionsById, skillsById)) {
+      if (savedStateIsCompatible(recovered)) {
         state = recovered; committed = true; renderPersistenceNotices();
       } else {
         state = before;
@@ -789,7 +961,7 @@ async function answer(question, choiceId) {
 }
 
 els.hintButton.addEventListener('click', async () => {
-  if (activeInteraction) return;
+  if (activeInteraction || inStartingCheck()) return;
   const question = currentQuestion();
   const binding = sessionBinding(question); const interaction = setInteraction('hint'); if (!interaction) return;
   let hint = null;
@@ -825,16 +997,7 @@ els.hintButton.addEventListener('click', async () => {
 });
 els.restart.addEventListener('click', renderDomainSelection);
 initializeIdentity();
-switch (getInitialView(state)) {
-  case 'safe-exit':
-    renderSafeExit();
-    break;
-  case 'complete':
-    renderComplete();
-    break;
-  default:
-    renderDomainSelection();
-}
+resetCurrentView();
 }
 
 void init();

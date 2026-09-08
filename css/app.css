@@ -69,6 +69,15 @@ h1 { margin: 0; max-width: 620px; font-size: clamp(1.85rem, 5vw, 2.8rem); line-h
 .recommended-next h3 { margin: 0; color: var(--accent-dark); font-size: 1.05rem; }
 .recommended-next h3:focus-visible { outline: 3px solid rgba(36, 89, 169, .2); outline-offset: 5px; border-radius: 4px; }
 .recommended-next p { margin: 8px 0 14px; color: var(--text); line-height: 1.48; }
+.starting-check-panel, .day-one-panel { margin-top: 18px; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: #fbfcfe; }
+.starting-check-panel { border-color: var(--accent); background: var(--accent-soft); }
+.starting-check-panel h3, .day-one-panel h3 { margin: 0; color: var(--accent-dark); font-size: 1.08rem; }
+.starting-check-panel p, .day-one-panel p { margin: 8px 0 0; line-height: 1.48; }
+.starting-check-panel ul, .day-one-panel ul { margin: 10px 0 14px; padding-left: 20px; color: var(--muted); line-height: 1.48; }
+.day-one-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.day-one-domain { min-width: 0; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff; }
+.day-one-domain h4, .day-one-domain p { margin: 0; }
+.day-one-domain p { margin-top: 5px; color: var(--muted); font-size: .9rem; }
 .domain-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
 .domain-card { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: #fff; box-shadow: 0 2px 8px rgba(24, 34, 48, .035); }
 .domain-card h3 { margin: 0; font-size: 1.06rem; overflow-wrap: anywhere; }
@@ -152,6 +161,7 @@ noscript { display: block; padding: 20px; text-align: center; }
   .question-card { padding: 19px 16px; }
   .entry-panel { padding: 19px 16px; }
   .domain-grid { grid-template-columns: 1fr; }
+  .day-one-grid { grid-template-columns: 1fr; }
   .recommended-next { margin-top: 14px; padding: 16px; }
   .recommended-next .next-button { width: 100%; }
   .skill-list li { align-items: flex-start; flex-direction: column; gap: 5px; }

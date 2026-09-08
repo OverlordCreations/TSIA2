@@ -1,4 +1,5 @@
 import { attemptFields, validAttemptAcknowledgement, validAttemptProposal, opaqueQuestionId, opaqueSkillId } from './attempt-contract.js';
+import { sanitizeStartingCheck } from './starting-check.js';
 const migrationVersion = 'v3';
 const envelopeVersion = 1;
 const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -147,7 +148,7 @@ export function studentSafeSyncStatusCopy({ signedIn = false, pending = false, b
 export function migrationId({ uid, questionVersion, legacyState }) { const snapshot = JSON.stringify(legacyState ?? null); let hash = 2166136261; for (let index = 0; index < snapshot.length; index += 1) hash = Math.imul(hash ^ snapshot.charCodeAt(index), 16777619); return `legacy-${migrationVersion}-${uid}-${questionVersion}-${(hash >>> 0).toString(16)}`; }
 const finite = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 100000;
 const status = new Set(['Not Assessed','Emerging','Developing','Near Mastery','Mastered']);
-export function sanitizeLegacyState(value) {
+export function sanitizeLegacyState(value, { questionsById = null, questionVersion = null } = {}) {
   if (!isRecord(value) || !Array.isArray(value.attempts) || !isRecord(value.mastery) || (value.currentQuestionId !== null && !opaqueQuestionId(value.currentQuestionId))) return null;
   const validHint = value => Number.isInteger(value) && value >= 0 && value <= 3;
   const mastery={};
@@ -165,14 +166,21 @@ export function sanitizeLegacyState(value) {
   for (const item of value.attempts) {
     const attemptedSkill=item?.attemptedSkill ?? item?.skillId; const correct=item?.correct ?? item?.correctness; const hintLevel=item?.assistance?.hintLevel ?? item?.hintLevel;
     if (!isRecord(item) || !opaqueQuestionId(item.questionId) || !opaqueSkillId(attemptedSkill) || typeof correct !== 'boolean' || !validHint(hintLevel) ||
+      (item.startingCheck !== undefined && item.startingCheck !== true) ||
       (item.assistance !== undefined && (!isRecord(item.assistance) || (item.assistance.independent !== undefined && item.assistance.independent !== (hintLevel === 0))))) return null;
-    attempts.push({ questionId:item.questionId, attemptedSkill, correct, assistance:{ hintLevel, independent:hintLevel===0 } });
+    attempts.push({ questionId:item.questionId, attemptedSkill, correct, assistance:{ hintLevel, independent:hintLevel===0 }, ...(item.startingCheck === true ? { startingCheck:true } : {}) });
   }
   if (attempts.length > 1000) return null;
   const result={ currentQuestionId:value.currentQuestionId, mastery, attempts, hintLevel:Number.isInteger(value.hintLevel)&&value.hintLevel>=0&&value.hintLevel<=3?value.hintLevel:0, safeExit:null };
   if (isRecord(value.pendingQuestionIds)) { const pending={}; for (const domain of ['QR','AR','GSR','PSR']) if (opaqueQuestionId(value.pendingQuestionIds[domain])) pending[domain]=value.pendingQuestionIds[domain]; if (Object.keys(pending).length) result.pendingQuestionIds=pending; }
   if (isRecord(value.safeExit) && (value.safeExit.skillId===null||opaqueSkillId(value.safeExit.skillId))) result.safeExit={reason:'legacy-local-check-in',skillId:value.safeExit.skillId??null};
   if (typeof value.sessionStartedAt==='string' && value.sessionStartedAt.length<=40 && !Number.isNaN(Date.parse(value.sessionStartedAt))) result.sessionStartedAt=value.sessionStartedAt;
+  if (value.startingCheck !== undefined) {
+    const startingCheck = sanitizeStartingCheck(value.startingCheck, { questionsById, questionVersion });
+    if (!startingCheck) return null;
+    if (startingCheck.status === 'in-progress' && (result.hintLevel !== 0 || result.currentQuestionId !== startingCheck.questionIds[startingCheck.index])) return null;
+    result.startingCheck = startingCheck;
+  }
   return result;
 }
-export function prepareLegacyMigration({ uid, questionVersion, legacyState }) { const sanitized = sanitizeLegacyState(legacyState); if (!uid || !sanitized) return null; const snapshotFingerprint=digest128(JSON.stringify(sanitized)); return Object.freeze({ migrationId: migrationId({ uid, questionVersion, legacyState: sanitized }), snapshotFingerprint, uid, questionVersion, requiresExplicitConsent: true, authoritative: false, missingFields: ['choiceId', 'occurredAtClient', 'misconceptionId'], status: 'awaiting-consent', legacyState: sanitized }); }
+export function prepareLegacyMigration({ uid, questionVersion, legacyState, questionsById = null }) { const sanitized = sanitizeLegacyState(legacyState, { questionsById, questionVersion }); if (!uid || !sanitized) return null; const snapshotFingerprint=digest128(JSON.stringify(sanitized)); return Object.freeze({ migrationId: migrationId({ uid, questionVersion, legacyState: sanitized }), snapshotFingerprint, uid, questionVersion, requiresExplicitConsent: true, authoritative: false, missingFields: ['choiceId', 'occurredAtClient', 'misconceptionId'], status: 'awaiting-consent', legacyState: sanitized }); }
